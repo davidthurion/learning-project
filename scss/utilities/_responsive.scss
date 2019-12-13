@@ -1,0 +1,35 @@
+@mixin bp-extralarge {
+  @media screen and (min-width: 1400px) {
+    @content;
+  }
+}
+
+@mixin bp-large {
+  @media screen and (min-width: 1200px) {
+    @content;
+  }
+}
+
+@mixin bp-medium {
+  @media screen and (min-width: 992px) {
+    @content;
+  }
+}
+
+@mixin bp-regular {
+  @media screen and (min-width: 667px) {
+    @content;
+  }
+}
+
+@mixin bp-small {
+  @media screen and (min-width: 576px) {
+    @content;
+  }
+}
+
+// to set breakpoints :
+// element {
+//   @include bp-small {
+//   }
+// }

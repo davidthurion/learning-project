@@ -1,0 +1,19 @@
+// TRANSFORM PIXEL TO REM
+@function calculateRem($size) {
+  $remSize: $size / 16px;
+  @return $remSize * 1rem;
+}
+
+// BASIC TRANSITION VALUE
+@mixin transition($duree: 0.4, $effet: ease-in-out) {
+  transition: $duree + s all $effet;
+}
+
+// FLEXBOX
+@mixin flexbox($direction: row, $justify: flex-start, $align-items: stretch, $wrap: nowrap) {
+  display: flex;
+  flex-direction: $direction;
+  justify-content: $justify;
+  align-items: $align-items;
+  flex-wrap: $wrap;
+}

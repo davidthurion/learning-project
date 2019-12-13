@@ -1,0 +1,31 @@
+// Border radius
+$basic-radius: calculateRem(5px);
+
+// Value
+$xs: calculateRem(5px);
+$s: calculateRem(10px);
+$r: calculateRem(15px);
+$m: calculateRem(20px);
+$l: calculateRem(40px);
+$xl: calculateRem(60px);
+$xxl: calculateRem(80px);
+
+// Positive spacing
+$spacing-xs: $xs;
+$spacing-s: $s;
+$spacing-r: $r;
+$spacing-m: $m;
+$spacing-l: $l;
+$spacing-xl: $xl;
+$spacing-xxl: $xxl;
+
+// Negative spacing
+$neg-spacing-xs: -$xs;
+$neg-spacing-s: -$s;
+$neg-spacing-r: -$r;
+$neg-spacing-m: -$m;
+$neg-spacing-l: -$l;
+$neg-spacing-xl: -$xl;
+$neg-spacing-xxl: -$xxl;
+
+$basic-border: 1px solid $light-gray;

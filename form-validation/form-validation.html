@@ -1,0 +1,45 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Form validation</title>
+    <link
+      href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,700,700i|Playfair+Display:400,400i,700,700i|Permanent+Marker"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../dist/css/styles.css" />
+  </head>
+  <body>
+    <main>
+      <h2>The form validation exercise</h2>
+      <p>Can I make a little form with a small validation of email and password?</p>
+      <form action="#" method="post" novalidate>
+        <div class="form-group">
+          <label for="email-input">Email address</label>
+          <input type="email" class="form-control" id="email-input" placeholder="youremail@email.com" required />
+        </div>
+        <div class="form-group">
+          <label for="password-input">Password</label>
+          <input type="password" class="form-control" id="password-input" placeholder="your password" required />
+        </div>
+        <a href="#">Forgot password?</a>
+        <div class="form-group">
+          <button type="button" id="reset-btn">
+            Reset
+          </button>
+          <button type="submit" id="submit-btn">
+            Login
+          </button>
+        </div>
+      </form>
+    </main>
+    <aside>
+      Design inspired by <a href="https://dribbble.com/shots/4136830-Spark-login-page-UI">Spark login page UI</a>
+    </aside>
+    <script src="../node_modules/steal/steal.js"></script>
+    <script type="text/steal-module">
+      import formValidation from "./form-validation/form-validation";
+    </script>
+  </body>
+</html>
