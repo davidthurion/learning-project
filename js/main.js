@@ -1,31 +1,47 @@
+const $emailInput = document.querySelector("#email-input");
+const $passWordInput = document.querySelector("#password-input");
 const $resetBtn = document.querySelector("#reset-btn");
 const $submitBtn = document.querySelector("#submit-btn");
 
+function validField($element) {
+  $element.classList.toggle("is-valid");
+}
+
+function invalidField($element) {
+  $element.classList.toggle("is-invalid");
+}
+
 function checkEmail() {
-  const $emailInput = document.querySelector("#email-input");
-  if ($emailInput.value.includes("@")) {
-    // tester l'email avec une regexp
-    $emailInput.classList.toggle("is-valid");
-    // validField($emailInput);
+  const mailFormat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+  if ($emailInput.value.match(mailFormat)) {
+    validField($emailInput);
+    return true;
   } else {
-    $emailInput.classList.toggle("is-invalid");
+    invalidField($emailInput);
+    return false;
   }
 }
 
 function checkPassword() {
-  const $passWordInput = document.querySelector("#password-input");
-  if ($passWordInput.value.length >= 10) {
-    // Le mot de passe doit contenir une majuscule, un chiffre
-    $passWordInput.classList.toggle("is-valid");
+  const passwordFormat = /(?:[A-Z].*[0-9])|(?:[0-9].*[A-Z])/;
+  //https://regexr.com/ https://regex101.com/
+  if ($passWordInput.value.match(passwordFormat)) {
+    validField($passWordInput);
+    return true;
   } else {
-    $passWordInput.classList.toggle("is-invalid");
+    invalidField($passWordInput);
+    return false;
   }
+}
+
+function resetInputValidation($formElement) {
+  $formElement.classList.remove("is-invalid");
+  $formElement.classList.remove("is-valid");
 }
 
 function resetFormValidation($formElement) {
   $formElement.forEach($element => {
-    $element.classList.remove("is-invalid");
-    $element.classList.remove("is-valid");
+    resetInputValidation($element);
   });
 }
 
@@ -35,6 +51,16 @@ function cleanInput($formElement) {
   });
 }
 
+$emailInput.addEventListener("change", () => {
+  resetInputValidation($emailInput);
+  checkEmail();
+});
+
+$passWordInput.addEventListener("change", () => {
+  resetInputValidation($passWordInput);
+  checkPassword();
+});
+
 $resetBtn.addEventListener("click", () => {
   const $formElement = document.querySelectorAll(".form-control");
   resetFormValidation($formElement);
@@ -42,11 +68,14 @@ $resetBtn.addEventListener("click", () => {
 });
 
 $submitBtn.addEventListener("click", event => {
-  const $formElement = document.querySelectorAll(".form-control");
   event.preventDefault();
-  resetFormValidation($formElement);
   checkEmail();
   checkPassword();
 
+  if (checkEmail() && checkPassword()) {
+    console.log("all true");
+  } else {
+    console.log("not true");
+  }
   // Envoyer le formulaire si tout est valide via une action ajax SendForm
 });
